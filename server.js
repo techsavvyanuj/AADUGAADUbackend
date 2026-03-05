@@ -16,8 +16,9 @@ const app = express();
 
 // Middleware
 app.use(helmet());
+const allowedOrigin = (process.env.FRONTEND_URL || 'https://www.aadugaadu.com').replace(/\/+$/, '');
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://www.aadugaadu.com',
+  origin: allowedOrigin,
   credentials: true,
 }));
 app.use(express.json());
